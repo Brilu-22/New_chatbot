@@ -1,10 +1,9 @@
 const chatInput = document.querySelector(".chat-input textarea");
 const sendChatBtn = document.querySelector(".chat-input span");
 const chatbox = document.querySelector(".chatbox");
-const chatboxToggler = document.querySelector(".chatbot-toggler");
 
 let userMessage;
-const API_KEY = "sk-proj-x8ihghwJpbvXF3PtFUR5T3BlbkFJVW3sMIHsU6Q12qS2moW0";
+const API_KEY = process.env.OPENAI_API_KEY; // Use environment variable
 
 const createChatLi = (message, className) => {
   const chatLi = document.createElement("li");
@@ -76,6 +75,3 @@ const handleChat = () => {
 };
 
 sendChatBtn.addEventListener("click", handleChat);
-chatboxToggler.addEventListener("click", () =>
-  document.body.classList.toggle("show-chatbot")
-);
