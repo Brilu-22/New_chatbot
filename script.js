@@ -33,7 +33,7 @@ const generateResponse = (thinkingLi) => {
       Authorization: `Bearer ${API_KEY}`,
     },
     body: JSON.stringify({
-      model: "gpt-3.5-turbo-0125",
+      model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: userMessage }],
     }),
   };
@@ -66,6 +66,10 @@ const handleChat = () => {
 
   // Append the user's message to the chatbox
   appendAndScroll(createChatLi(userMessage, "outgoing"));
+
+  // Clear the input field and move focus back to it
+  chatInput.value = "";
+  chatInput.focus();
 
   setTimeout(() => {
     // Display "Thinking..." message while waiting for the response
